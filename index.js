@@ -12,13 +12,36 @@
 // 3. use the gradients to style the form
 
 /*THIS IS WHAT WE WANT*/
-/* .gradient {background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);} */
+/* .gradient {background: linear-gradient(90deg, #33ccff 0%, #ff99cc);} */
 
 const picker1 = document.getElementById("picker-1");
 const picker2 = document.getElementById("picker-2");
 const split = document.getElementById("split");
 const direction = document.getElementById("direction");
 const gradientForm = document.getElementById("gradient");
+const target = document.getElementById("target");
+
+(function () {
+  const initialGradient = `linear-gradient(90deg, ${picker1.value} ${split.value}%, ${picker2.value})`;
+  gradientForm.style.background = initialGradient;
+  console.log(gradientForm.style.background);
+  target.textContent = `background: ${initialGradient}`;
+})();
+
+function changeGradient() {
+  const degreesArr = direction.value.split("°");
+  let degreeValue = Number(degreesArr[0]);
+  if (isNaN(degreeValue)) {
+    degreeValue = 0;
+  }
+  const newGradient =
+    degreeValue === 0
+      ? `linear-gradient(${picker1.value} ${split.value}%, ${picker2.value})`
+      : `linear-gradient(${degreeValue}deg, ${picker1.value} ${split.value}%, ${picker2.value})`;
+  gradientForm.style.background = newGradient;
+  target.textContent = `background: ${newGradient}`;
+  direction.value = `${degreeValue}°`;
+}
 
 picker1.addEventListener("input", changeGradient);
 picker2.addEventListener("input", changeGradient);
@@ -26,10 +49,23 @@ split.addEventListener("input", changeGradient);
 direction.addEventListener("input", changeGradient);
 gradientForm.addEventListener("submit", (e) => e.preventDefault());
 
-function changeGradient() {
-  let degreesArr = direction.value.split("°");
-  let [degreeValue] = degreesArr;
-  console.log(degreeValue);
-  gradientForm.style.background = `linear-gradient(${degreeValue}deg, ${picker1.value} ${split.value}%, ${picker2.value})`;
-  direction.value = `${degreeValue}°`;
+/* Select the code div to make it easier to copy */
+
+function selectText() {
+  if (document.body.createTextRange) {
+    const range = document.body.createTextRange();
+    range.moveToElementText(target);
+    range.select();
+  } else if (window.getSelection) {
+    const selection = window.getSelection();
+    const range = document.createRange();
+    range.selectNodeContents(target);
+    selection.removeAllRanges();
+    selection.addRange(range);
+  } else {
+    console.warn("Could not select text in node: Unsupported browser.");
+  }
 }
+
+const clickable = document.querySelector(".click-me");
+clickable.addEventListener("click", () => selectText());

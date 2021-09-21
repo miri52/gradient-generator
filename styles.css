@@ -5,22 +5,42 @@ body {
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
   font-size: 25px;
-  font-family: "Karla", sans-serif;
+  font-family: "Nunito", sans-serif;
+  background: #f5f6f7;
+  color: #171b41;
 }
+
+h1 {
+  margin-top: 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  padding: 2em;
+  border: 1px solid #dee1e5;
+  width: 700px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+/* Form */
 
 .gradient {
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
   background-color: #b5caf9;
-  /*THIS IS WHAT WE WANT*/
-  /* background: linear-gradient(90deg, #b5caf9 0%, #aad186 100%); */
-  padding: 2.5em 5em;
+  padding: 1em 5em;
   border-radius: 5px;
+}
+
+.split-cotainer {
+  margin-top: 5px;
 }
 
 input {
@@ -40,8 +60,42 @@ input[type="text"] {
   font-size: inherit;
   font-family: inherit;
   color: inherit;
-  width: 50px;
+  width: 60px;
   padding: 0.25em;
   border: 1px solid #bbbfc5;
   border-radius: 6px;
+}
+
+/* Code to copy */
+
+.code-container {
+  margin-top: 1em;
+  padding: 1em 2em;
+  text-align: center;
+  background: #171b41;
+  color: #fff;
+  border-radius: 5px;
+  width: 600px;
+}
+
+.code-title {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.code-to-copy {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 1em 2em;
+  margin: 1em;
+  letter-spacing: 1px;
+  border: 2px solid transparent;
+  transition: all 250ms ease-in-out;
+  background: white;
+  color: #171b41;
+}
+
+.code-to-copy:hover {
+  border: 2px solid white;
 }
