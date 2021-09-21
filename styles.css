@@ -1,0 +1,47 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 25px;
+  font-family: "Karla", sans-serif;
+}
+
+.gradient {
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  background-color: #b5caf9;
+  /*THIS IS WHAT WE WANT*/
+  /* background: linear-gradient(90deg, #b5caf9 0%, #aad186 100%); */
+  padding: 2.5em 5em;
+  border-radius: 5px;
+}
+
+input {
+  cursor: pointer;
+  margin: 10px;
+}
+
+input[type="color"] {
+  border-radius: 5px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  height: 30px;
+  width: 100px;
+}
+
+input[type="text"] {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+  width: 50px;
+  padding: 0.25em;
+  border: 1px solid #bbbfc5;
+  border-radius: 6px;
+}

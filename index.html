@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Gradient Generator</title>
+  </head>
+  <body>
+    <form id="gradient" class="gradient">
+      <div>
+        <label for="picker-1">Color 1:</label>
+        <input id="picker-1" type="color" name="color1" value="#b5caf9" />
+      </div>
+      <div>
+        <label for="picker-2">Color 2:</label>
+        <input id="picker-2" type="color" name="color2" value="#aad186" />
+      </div>
+      <div>
+        <label for="split">Split:</label>
+        <input
+          value="50"
+          type="range"
+          id="split"
+          name="split"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div>
+        <label for="direction">Direction:</label>
+        <input type="text" id="direction" name="direction" value="90°" />
+      </div>
+    </form>
+    <script src="index.js"></script>
+  </body>
+</html>
