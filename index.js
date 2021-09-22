@@ -24,7 +24,6 @@ const target = document.getElementById("target");
 (function () {
   const initialGradient = `linear-gradient(90deg, ${picker1.value} ${split.value}%, ${picker2.value})`;
   gradientForm.style.background = initialGradient;
-  console.log(gradientForm.style.background);
   target.textContent = `background: ${initialGradient}`;
 })();
 
@@ -42,12 +41,6 @@ function changeGradient() {
   target.textContent = `background: ${newGradient}`;
   direction.value = `${degreeValue}°`;
 }
-
-picker1.addEventListener("input", changeGradient);
-picker2.addEventListener("input", changeGradient);
-split.addEventListener("input", changeGradient);
-direction.addEventListener("input", changeGradient);
-gradientForm.addEventListener("submit", (e) => e.preventDefault());
 
 /* Select the code div to make it easier to copy */
 
@@ -69,3 +62,19 @@ function selectText() {
 
 const clickable = document.querySelector(".click-me");
 clickable.addEventListener("click", () => selectText());
+
+/* Control and style the split slider */
+
+function updateSplit() {
+  let value = ((split.value - split.min) / (split.max - split.min)) * 100;
+  split.style.background = `linear-gradient(to right, #171b41 0%, #171b41 ${value}%, #fff ${value}%, #fff 100%`;
+}
+
+picker1.addEventListener("input", changeGradient);
+picker2.addEventListener("input", changeGradient);
+direction.addEventListener("input", changeGradient);
+gradientForm.addEventListener("submit", (e) => e.preventDefault());
+split.addEventListener("input", () => {
+  changeGradient();
+  updateSplit();
+});
