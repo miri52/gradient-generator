@@ -5,7 +5,6 @@ body {
 }
 
 body {
-  height: 100vh;
   font-size: 25px;
   font-family: "Nunito", sans-serif;
   background: #f5f6f7;
@@ -17,12 +16,25 @@ h1 {
   text-align: center;
 }
 
-.container {
+h3 {
+  margin-top: 0.7em;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container-flex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2em auto;
+  margin: 1em auto;
   padding: 2em;
   border: 1px solid #dee1e5;
   min-width: 250px;
@@ -38,14 +50,14 @@ h1 {
   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
     rgba(17, 17, 26, 0.1) 0px 0px 8px;
   background-color: #b5caf9;
-  padding: 1em 2em;
+  padding: 0.5em 2em;
   border-radius: 5px;
   width: 80%;
   max-width: 400px;
 }
 
-.split-cotainer {
-  margin-top: 5px;
+.split-container {
+  margin-top: 10px;
 }
 
 input {
@@ -64,14 +76,14 @@ input[type="color"] {
 input[type="text"] {
   font-size: inherit;
   font-family: inherit;
-  color: inherit;
+  color: #171b41;
   width: 60px;
   padding: 0.25em;
   border: 1px solid #bbbfc5;
   border-radius: 6px;
 }
 
-input[type="range"] {
+.input-range-dark {
   background: linear-gradient(
     to right,
     #171b41 0%,
@@ -86,18 +98,46 @@ input[type="range"] {
   outline: none;
   transition: background 450ms ease-in;
   -webkit-appearance: none;
-  border: none;
+  border: 0.5px solid rgb(133, 133, 133);
 }
 
-input[type="range"]::-webkit-slider-runnable-track {
-  /* -webkit-appearance: none; */
-  width: 100%;
+.input-range-light {
+  background: linear-gradient(
+    to right,
+    #fff 0%,
+    #fff 50%,
+    #171b41 50%,
+    #171b41 100%
+  );
+  background: #fff;
+  border-radius: 5px;
+  height: 7px;
+  width: 200px;
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+  border: 0.5px solid rgb(133, 133, 133);
 }
 
-input[type="range"]::-webkit-slider-thumb {
+.input-range-dark::-webkit-slider-thumb {
   box-shadow: none;
   border: 0px solid #ffffff;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  height: 22px;
+  width: 12px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 1);
+  -webkit-appearance: none;
+}
+
+.input-range-light::-webkit-slider-thumb {
+  box-shadow: none;
+  border: 0px solid #ffffff;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
   height: 22px;
   width: 12px;
   border-radius: 22px;
@@ -157,4 +197,90 @@ input[type="range"]::-moz-focus-outer {
 
 .code-to-copy:hover {
   border: 2px solid white;
+}
+
+/* Inspiration */
+
+.inspiration {
+  padding: 2em 3em;
+  margin: 1em 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 5px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px,
+    rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  width: 80%;
+  text-align: center;
+}
+
+.inspiration i {
+  margin: 0 1em;
+}
+
+.inspiration-1 {
+  background: linear-gradient(90deg, #005aa7, #fffde4);
+  color: #fff;
+}
+
+.inspiration-2 {
+  background: linear-gradient(270deg, #d9a7c7, #fffcdc);
+}
+
+.inspiration-3 {
+  background: linear-gradient(180deg, #44a08d, #093637);
+  color: #fff;
+}
+
+.inspiration-4 {
+  background: linear-gradient(0deg, #d9afd9, #97d9e1);
+}
+
+.inspiration-5 {
+  background-image: linear-gradient(19deg, #21d4fd, #b721ff);
+}
+
+.inspiration-6 {
+  background-image: linear-gradient(132deg, #f4d03f, #16a085);
+}
+
+@media (min-width: 500px) {
+  .container-inspiration {
+    align-self: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 850px) {
+  .container-main {
+    flex-direction: row;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+  .container-generator {
+    margin-right: 1em;
+    min-width: 400px;
+  }
+  /* 
+  .container-inspiration {
+    align-self: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0.5em;
+    max-width: 600px;
+  } */
+
+  h3 {
+    width: 100%;
+    text-align: center;
+  }
+
+  .inspiration {
+    width: 75px;
+    height: 75px;
+    margin: 0.5em;
+  }
 }

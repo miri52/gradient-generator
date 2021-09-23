@@ -10,46 +10,74 @@
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;600&display=swap"
       rel="stylesheet"
     />
+    <script
+      src="https://kit.fontawesome.com/1e12042d01.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Gradient Generator</title>
   </head>
   <body>
-    <div class="container">
-      <h1>Generate your gradient</h1>
-      <form id="gradient" class="gradient">
-        <div>
-          <label for="picker-1">Color 1:</label>
-          <input id="picker-1" type="color" name="color1" value="#b5caf9" />
+    <div class="container-main">
+      <div class="container-flex container-generator">
+        <h1>Generate your gradient</h1>
+        <form id="gradient" class="gradient">
+          <div>
+            <label for="picker-1">Color 1:</label>
+            <input id="picker-1" type="color" name="color1" value="#f2f2f2" />
+          </div>
+          <div>
+            <label for="picker-2">Color 2:</label>
+            <input id="picker-2" type="color" name="color2" value="#c9d6ff" />
+          </div>
+          <div class="split-container">
+            <label for="split">Split:</label>
+            <input
+              value="50"
+              type="range"
+              id="split"
+              class="input-range-dark"
+              name="split"
+              min="0"
+              max="100"
+            />
+          </div>
+          <div>
+            <label for="direction">Direction:</label>
+            <input
+              type="text"
+              id="direction"
+              name="direction"
+              value="90°"
+              maxlength="4"
+            />
+          </div>
+        </form>
+        <div class="code-container">
+          <div class="code-title">Your CSS code</div>
+          <div class="code-to-copy click-me" id="target"></div>
         </div>
-        <div>
-          <label for="picker-2">Color 2:</label>
-          <input id="picker-2" type="color" name="color2" value="#aad186" />
+      </div>
+      <div class="container-flex container-inspiration">
+        <h3>Get Inspired</h3>
+        <div class="inspiration inspiration-1">
+          #005AA7 <i class="fas fa-long-arrow-alt-right"></i>#FFFDE4
         </div>
-        <div class="split-container">
-          <label for="split">Split:</label>
-          <input
-            value="50"
-            type="range"
-            id="split"
-            name="split"
-            min="0"
-            max="100"
-          />
+        <div class="inspiration inspiration-2">
+          #d9a7c7<i class="fas fa-long-arrow-alt-right"></i>#fffcdc
         </div>
-        <div>
-          <label for="direction">Direction:</label>
-          <input
-            type="text"
-            id="direction"
-            name="direction"
-            value="90°"
-            maxlength="4"
-          />
+        <div class="inspiration inspiration-3">
+          #44A08D<i class="fas fa-long-arrow-alt-right"></i>#093637
         </div>
-      </form>
-      <div class="code-container">
-        <div class="code-title">Your CSS code</div>
-        <div class="code-to-copy click-me" id="target"></div>
+        <div class="inspiration inspiration-4">
+          #d9afd9<i class="fas fa-long-arrow-alt-right"></i>#97d9e1
+        </div>
+        <div class="inspiration inspiration-5">
+          #21d4fd<i class="fas fa-long-arrow-alt-right"></i>#b721ff
+        </div>
+        <div class="inspiration inspiration-6">
+          #f4d03f<i class="fas fa-long-arrow-alt-right"></i>#16a085
+        </div>
       </div>
     </div>
     <script src="index.js"></script>
