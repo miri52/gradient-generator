@@ -16,9 +16,9 @@
     },
     {
       "id": "03",
-      "firstColor": "#44a08d",
-      "secondColor": "#093637",
-      "degrees": 180,
+      "firstColor": "#f4d03f",
+      "secondColor": "#16a085",
+      "degrees": 132,
       "split": 0
     },
     {
@@ -37,9 +37,9 @@
     },
     {
       "id": "06",
-      "firstColor": "#f4d03f",
-      "secondColor": "#16a085",
-      "degrees": 132,
+      "firstColor": "#a8ff78",
+      "secondColor": "#78ffd6",
+      "degrees": 90,
       "split": 0
     }
   ]

@@ -40,7 +40,7 @@ function renderInspirations(data) {
   data.inspirations.forEach((el) => {
     backgroundStyle = `linear-gradient(${el.degrees}deg, ${el.firstColor} ${el.split}%, ${el.secondColor})`;
     html += `
-    <div class="inspiration inspiration-${el.id}" style="background: ${backgroundStyle}"><span>${el.firstColor}</span><i class="fas fa-long-arrow-alt-right"></i><span>${el.secondColor}</span></div>
+    <div class="inspiration inspiration-${el.id}" style="background: ${backgroundStyle}"><a href="#gradient"><span>${el.firstColor}</span><i class="fas fa-long-arrow-alt-right"></i><span>${el.secondColor}</span></a></div>
     `;
   });
   inspirationsContainer.innerHTML = html;
@@ -59,15 +59,6 @@ function renderInspirations(data) {
   }
 })();
 
-function addEventListeners(data) {
-  console.log(data);
-  const firstInspiration = document.querySelector(".inspiration-01");
-  console.log(firstInspiration);
-  firstInspiration.addEventListener("click", () =>
-    updateGradient(data.inspirations[0])
-  );
-}
-
 /**********************
  * Main functionality - updating gradients
  ***********/
@@ -82,6 +73,14 @@ function updateGradient(inspiration) {
   styleGradientForm(degreeValue);
   updateSplit();
   setContrastingColor();
+}
+
+function addEventListeners(data) {
+  data.inspirations.forEach((el) => {
+    document
+      .querySelector(`.inspiration-${el.id}`)
+      .addEventListener("click", () => updateGradient(el));
+  });
 }
 
 /* Update gradient based on user's interaction with the form */
