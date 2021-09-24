@@ -21,12 +21,40 @@ const direction = document.getElementById("direction");
 const gradientForm = document.getElementById("gradient");
 const target = document.getElementById("target");
 
-/* Initialize */
+const inspirationsContainer = document.getElementById("container-inspiration");
+
+/* Initialize gradient form */
 
 (function () {
   const initialGradient = `linear-gradient(90deg, ${picker1.value} ${split.value}%, ${picker2.value})`;
   gradientForm.style.background = initialGradient;
   target.textContent = `background: ${initialGradient}`;
+})();
+
+/* Initialize insppirations */
+
+function renderInspirations(data) {
+  let html = `<h3>Get Inspired</h3>`;
+  let backgroundStyle = "";
+  data.inspirations.forEach((el) => {
+    backgroundStyle = `linear-gradient(${el.degrees}deg, ${el.firstColor} ${el.split}%, ${el.secondColor})`;
+    html += `
+    <div class="inspiration inspiration-${el.id}" style="background: ${backgroundStyle}"><span>${el.firstColor}</span><i class="fas fa-long-arrow-alt-right"></i><span>${el.secondColor}</span></div>
+    `;
+  });
+  inspirationsContainer.innerHTML = html;
+}
+
+(async function getInspirations() {
+  try {
+    const res = await fetch("inspirations.json");
+    if (!res.ok)
+      throw new Error("Problem getting information about the inspirations");
+    const data = await res.json();
+    renderInspirations(data);
+  } catch (err) {
+    console.error(err.message);
+  }
 })();
 
 /* Update gradient based on user's interaction */

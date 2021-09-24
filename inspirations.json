@@ -1,0 +1,46 @@
+{
+  "inspirations": [
+    {
+      "id": "01",
+      "firstColor": "#005aa7",
+      "secondColor": "#fffde4",
+      "degrees": 90,
+      "split": 0
+    },
+    {
+      "id": "02",
+      "firstColor": "#d9a7c7",
+      "secondColor": "#fffcdc",
+      "degrees": 270,
+      "split": 0
+    },
+    {
+      "id": "03",
+      "firstColor": "#44a08d",
+      "secondColor": "#093637",
+      "degrees": 180,
+      "split": 0
+    },
+    {
+      "id": "04",
+      "firstColor": "#d9afd9",
+      "secondColor": "#97d9e1",
+      "degrees": 0,
+      "split": 0
+    },
+    {
+      "id": "05",
+      "firstColor": "#21d4fd",
+      "secondColor": "#b721ff",
+      "degrees": 19,
+      "split": 0
+    },
+    {
+      "id": "06",
+      "firstColor": "#f4d03f",
+      "secondColor": "#16a085",
+      "degrees": 132,
+      "split": 0
+    }
+  ]
+}
