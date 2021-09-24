@@ -11,9 +11,6 @@
 // 2. add those colors in a gradient declaration
 // 3. use the gradients to style the form
 
-/*THIS IS WHAT WE WANT*/
-/* .gradient {background: linear-gradient(90deg, #33ccff 0%, #ff99cc);} */
-
 const picker1 = document.getElementById("picker-1");
 const picker2 = document.getElementById("picker-2");
 const split = document.getElementById("split");
@@ -23,6 +20,10 @@ const target = document.getElementById("target");
 
 const inspirationsContainer = document.getElementById("container-inspiration");
 
+/******************
+ * Initialization
+ ***************/
+
 /* Initialize gradient form */
 
 (function () {
@@ -31,7 +32,7 @@ const inspirationsContainer = document.getElementById("container-inspiration");
   target.textContent = `background: ${initialGradient}`;
 })();
 
-/* Initialize insppirations */
+/* Initialize inspirations */
 
 function renderInspirations(data) {
   let html = `<h3>Get Inspired</h3>`;
@@ -52,19 +53,54 @@ function renderInspirations(data) {
       throw new Error("Problem getting information about the inspirations");
     const data = await res.json();
     renderInspirations(data);
+    addEventListeners(data);
   } catch (err) {
     console.error(err.message);
   }
 })();
 
-/* Update gradient based on user's interaction */
+function addEventListeners(data) {
+  console.log(data);
+  const firstInspiration = document.querySelector(".inspiration-01");
+  console.log(firstInspiration);
+  firstInspiration.addEventListener("click", () =>
+    updateGradient(data.inspirations[0])
+  );
+}
+
+/**********************
+ * Main functionality - updating gradients
+ ***********/
+
+/* Update gradient based on inspiration clicked */
+
+function updateGradient(inspiration) {
+  const degreeValue = inspiration.degrees;
+  picker1.value = inspiration.firstColor;
+  picker2.value = inspiration.secondColor;
+  split.value = inspiration.split;
+  styleGradientForm(degreeValue);
+  updateSplit();
+  setContrastingColor();
+}
+
+/* Update gradient based on user's interaction with the form */
 
 function changeGradient() {
   const degreesArr = direction.value.split("°");
-  let degreeValue = Number(degreesArr[0]);
+  const degreeValue = Number(degreesArr[0]);
   if (isNaN(degreeValue)) {
     degreeValue = 0;
   }
+  styleGradientForm(degreeValue);
+  setContrastingColor();
+}
+
+/***********************
+ *  Form styling
+ * ***************/
+
+function styleGradientForm(degreeValue) {
   const newGradient =
     degreeValue === 0
       ? `linear-gradient(${picker1.value} ${split.value}%, ${picker2.value})`
@@ -72,9 +108,23 @@ function changeGradient() {
   gradientForm.style.background = newGradient;
   target.textContent = `background: ${newGradient}`;
   direction.value = `${degreeValue}°`;
-  console.log(newGradient);
+}
+
+/* Check for contrast ratio and style text accordingly */
+
+function getContrast(hexcolor) {
+  if (hexcolor.slice(0, 1) === "#") {
+    hexcolor = hexcolor.slice(1);
+  }
+  const r = parseInt(hexcolor.substr(0, 2), 16);
+  const g = parseInt(hexcolor.substr(2, 2), 16);
+  const b = parseInt(hexcolor.substr(4, 2), 16);
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? "#171b41" : "white";
+}
+
+function setContrastingColor() {
   const contrastingTextColor = getContrast(picker1.value);
-  console.log(contrastingTextColor);
   gradientForm.style.color = contrastingTextColor;
   if (contrastingTextColor === "white") {
     split.classList.add("input-range-light");
@@ -84,6 +134,17 @@ function changeGradient() {
     split.classList.add("input-range-dark");
     split.classList.remove("input-range-light");
     updateSplit();
+  }
+}
+
+/* Control and style the split slider */
+
+function updateSplit() {
+  let value = ((split.value - split.min) / (split.max - split.min)) * 100;
+  if (split.classList.contains("input-range-dark")) {
+    split.style.background = `linear-gradient(to right, #171b41 0%, #171b41 ${value}%, #fff ${value}%, #fff 100%`;
+  } else if (split.classList.contains("input-range-light")) {
+    split.style.background = `linear-gradient(to right, #fff 0%, #fff ${value}%, #171b41 ${value}%, #171b41 100%`;
   }
 }
 
@@ -108,18 +169,9 @@ function selectText() {
 const clickable = document.querySelector(".click-me");
 clickable.addEventListener("click", () => selectText());
 
-/* Control and style the split slider */
-
-function updateSplit() {
-  let value = ((split.value - split.min) / (split.max - split.min)) * 100;
-  if (split.classList.contains("input-range-dark")) {
-    split.style.background = `linear-gradient(to right, #171b41 0%, #171b41 ${value}%, #fff ${value}%, #fff 100%`;
-  } else if (split.classList.contains("input-range-light")) {
-    split.style.background = `linear-gradient(to right, #fff 0%, #fff ${value}%, #171b41 ${value}%, #171b41 100%`;
-  }
-}
-
-/* Event listeners */
+/*********************
+ *  Event listeners
+ * *********************/
 
 picker1.addEventListener("input", changeGradient);
 picker2.addEventListener("input", changeGradient);
@@ -129,16 +181,3 @@ split.addEventListener("input", () => {
   changeGradient();
   updateSplit();
 });
-
-/* Check for contrast ratio */
-
-function getContrast(hexcolor) {
-  if (hexcolor.slice(0, 1) === "#") {
-    hexcolor = hexcolor.slice(1);
-  }
-  const r = parseInt(hexcolor.substr(0, 2), 16);
-  const g = parseInt(hexcolor.substr(2, 2), 16);
-  const b = parseInt(hexcolor.substr(4, 2), 16);
-  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
-  return yiq >= 128 ? "#171b41" : "white";
-}
