@@ -40,7 +40,8 @@ function renderInspirations(data) {
   data.inspirations.forEach((el) => {
     backgroundStyle = `linear-gradient(${el.degrees}deg, ${el.firstColor} ${el.split}%, ${el.secondColor})`;
     html += `
-    <div class="inspiration inspiration-${el.id}" style="background: ${backgroundStyle}"><a href="#gradient"><span>${el.firstColor}</span><i class="fas fa-long-arrow-alt-right"></i><span>${el.secondColor}</span></a></div>
+     <a class="inspiration inspiration-${el.id}" style="background: ${backgroundStyle}" href="#gradient">
+    <div ><span>${el.firstColor}</span><i class="fas fa-long-arrow-alt-right"></i><span>${el.secondColor}</span></div></a>
     `;
   });
   inspirationsContainer.innerHTML = html;
