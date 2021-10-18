@@ -6,7 +6,7 @@ This is a solution to the [Weekly Web Dev Challenge on Scrimba](https://scrimba.
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshot](#screenshot-desktop-solution)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -31,7 +31,7 @@ Own stretch goal:
 
 - Add a few inspirations. When a specific inspiration is selected, use it to style the form.
 
-### Screenshot
+### Screenshot - Desktop Solution:
 
 ![Desktop Solution](./design/gradient-desktop-solution.png)
 
@@ -47,7 +47,7 @@ Own stretch goal:
 - Mobile-first workflow
 - Flexbox
 - Media queries
-- JSON data
+- JSON data file
 - async/await
 
 ### Continued development
